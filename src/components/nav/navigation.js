@@ -45,7 +45,7 @@ export function Navigation({user, setUser}) {
     return (
         <div>
             <Navbar className="p-1" bg="dark" variant="dark">
-                <Navbar.Brand href="/">Бально-рейтинговая система</Navbar.Brand>
+                <Navbar.Brand href="/">Учет успеваемости</Navbar.Brand>
                 <Nav>
                     {isAuth ? <Nav.Link href="/">Домой</Nav.Link> : null}
                 </Nav>
