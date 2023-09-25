@@ -15,11 +15,11 @@ function SearchList({ students, searchStr, setSelectedStud}) {
     let filtered = null
     if (students) {
         filtered = [...students].filter((item) => {
-            return item.user.first_name?.includes(searchStr) ||
-                item.user.last_name?.includes(searchStr) ||
-                item.user.patronymic?.includes(searchStr) ||
-                item.user.username?.includes(searchStr) ||
-                item.user.email?.includes(searchStr) ||
+            return item.user?.first_name?.includes(searchStr) ||
+                item.user?.last_name?.includes(searchStr) ||
+                item.user?.patronymic?.includes(searchStr) ||
+                item.user?.username?.includes(searchStr) ||
+                item.user?.email?.includes(searchStr) ||
                 item.record_book_number?.includes(searchStr)
         }).map((i, idx) => {
             return (
