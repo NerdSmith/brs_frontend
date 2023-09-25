@@ -62,7 +62,7 @@ const StudMarks = () => {
         (async () => {
             try {
                 const {data} = await
-                    axios.get(`/api/v1/auth/users/students`,
+                    axios.get(`/api/v1/auth/users/students/`,
                         {
                             headers:
                                 {
