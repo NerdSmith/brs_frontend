@@ -12,20 +12,37 @@ export const Scroll = (props) => {
 }
 
 function SearchList({ students, searchStr, setSelectedStud}) {
-    const filtered = students.filter((item) => {
-        return item.user.first_name?.includes(searchStr) ||
-            item.user.last_name?.includes(searchStr) ||
-            item.user.patronymic?.includes(searchStr) ||
-            item.user.username?.includes(searchStr) ||
-            item.user.email?.includes(searchStr) ||
-            item.record_book_number?.includes(searchStr)
-    }).map((i, idx) => {
-        return (
-            <li className="list-group-item list-group-item-action" key={idx} onClick={(event => {setSelectedStud(i)})}>
-                {shortName(i.user)}
-            </li>
-        )
-    })
+    let filtered = null
+    if (students) {
+        filtered = students.filter((item) => {
+            return item.user.first_name?.includes(searchStr) ||
+                item.user.last_name?.includes(searchStr) ||
+                item.user.patronymic?.includes(searchStr) ||
+                item.user.username?.includes(searchStr) ||
+                item.user.email?.includes(searchStr) ||
+                item.record_book_number?.includes(searchStr)
+        }).map((i, idx) => {
+            return (
+                <li className="list-group-item list-group-item-action" key={idx} onClick={(event => {setSelectedStud(i)})}>
+                    {shortName(i.user)}
+                </li>
+            )
+        })
+    }
+    // const filtered = students.filter((item) => {
+    //     return item.user.first_name?.includes(searchStr) ||
+    //         item.user.last_name?.includes(searchStr) ||
+    //         item.user.patronymic?.includes(searchStr) ||
+    //         item.user.username?.includes(searchStr) ||
+    //         item.user.email?.includes(searchStr) ||
+    //         item.record_book_number?.includes(searchStr)
+    // }).map((i, idx) => {
+    //     return (
+    //         <li className="list-group-item list-group-item-action" key={idx} onClick={(event => {setSelectedStud(i)})}>
+    //             {shortName(i.user)}
+    //         </li>
+    //     )
+    // })
 
     // const filtered = filteredPersons.map(person => <div></div>);
     return (
@@ -38,7 +55,7 @@ function SearchList({ students, searchStr, setSelectedStud}) {
 const StudMarks = () => {
 
     const [searchStr, setSearchStr] = useState("")
-    const [students, setStudents] = useState([])
+    const [students, setStudents] = useState(null)
     const [selectedStud, setSelectedStud] = useState(null)
 
     useEffect(() => {
